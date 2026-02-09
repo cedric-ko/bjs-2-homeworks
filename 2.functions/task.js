@@ -77,5 +77,16 @@ function averageEvenElementsWorker(...arr) {
 }
 
 function makeWork (arrOfArr, func) {
-
+  // инициализируем переменную для максимального результата с начальным значением минус бесконечность
+   let maxWorkerResult = -Infinity; 
+  
+  for (let i = 0; i < arrOfArr.length; i++) { // перебираем все массивы Массива
+    const workerResult = func(...arrOfArr[i]); // передаём в функцию каждый элемент-массив, сохраняя в константе
+    
+    if (workerResult > maxWorkerResult) { // если результат функции больше максимального результата,
+      maxWorkerResult = workerResult; // этот результат становится новым максимальным результатом
+    }
+  }
+  
+  return maxWorkerResult; // возвращаем итоговый максимальный результат
 }
